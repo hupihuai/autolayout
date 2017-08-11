@@ -21,6 +21,7 @@ import static android.content.Context.WINDOW_SERVICE;
 public class AdapterConstraintLayout extends ConstraintLayout {
     private static final int DESIGN_WIDTH = 1080;
     private static final int DESIGN_HEIGHT = 1920;
+    private static final float DESIGN_SCALE = 3.0f;
     private float mScale;
     private float mFontScale;
     private float mScaleX = 0;
@@ -46,8 +47,8 @@ public class AdapterConstraintLayout extends ConstraintLayout {
             mScaleX = (point.x * 1.0f / DESIGN_WIDTH);
             mScaleY = (point.y * 1.0f / DESIGN_HEIGHT);
         }
-        float density = 3 * 1.0f / getResources().getDisplayMetrics().density;
-        float scaleDensity = 3 * 1.0f / getResources().getDisplayMetrics().scaledDensity;
+        float density = DESIGN_SCALE / getResources().getDisplayMetrics().density;
+        float scaleDensity = DESIGN_SCALE / getResources().getDisplayMetrics().scaledDensity;
         float minScale = Math.min(mScaleX, mScaleY);
         mScale = minScale * density;
         mScaleX *= density;

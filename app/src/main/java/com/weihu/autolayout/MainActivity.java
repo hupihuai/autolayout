@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.weihu.autolayout.adapter.AdapterActivity;
+import com.weihu.autolayout.musicdemo.MusicDemoActivity;
 import com.weihu.autolayout.noadapter.NoAdapterActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,6 +28,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AdapterActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.button3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, MusicDemoActivity.class);
                 startActivity(intent);
             }
         });
