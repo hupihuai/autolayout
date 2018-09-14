@@ -62,12 +62,6 @@ public class AdapterConstraintLayout extends ConstraintLayout {
     }
 
     @Override
-    protected void onFinishInflate() {
-        super.onFinishInflate();
-
-    }
-
-    @Override
     public void setLayoutParams(ViewGroup.LayoutParams params) {
         super.setLayoutParams(params);
         transformSize(this, params);
@@ -108,10 +102,13 @@ public class AdapterConstraintLayout extends ConstraintLayout {
     @Override
     public void onViewRemoved(View view) {
         super.onViewRemoved(view);
-        view.setTag(R.id.has_adapter_size, null);
     }
 
     private void adapterChild(View view, ViewGroup.LayoutParams params) {
+        Object tag = view.getTag(R.id.has_adapter_size);
+        if (tag != null || params == null) {//处理过就不处理了
+            return;
+        }
         transformSize(view, params);
         if (view instanceof ViewGroup) {
             ViewGroup viewGroup = (ViewGroup) view;
