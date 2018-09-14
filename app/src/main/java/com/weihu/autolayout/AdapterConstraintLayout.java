@@ -112,6 +112,7 @@ public class AdapterConstraintLayout extends ConstraintLayout {
     }
 
     private void adapterChild(View view, ViewGroup.LayoutParams params) {
+        transformSize(view, params);
         if (view instanceof ViewGroup) {
             ViewGroup viewGroup = (ViewGroup) view;
             int childCount = viewGroup.getChildCount();
@@ -119,8 +120,6 @@ public class AdapterConstraintLayout extends ConstraintLayout {
                 View childView = viewGroup.getChildAt(i);
                 adapterChild(childView, childView.getLayoutParams());
             }
-        } else {
-            transformSize(view, params);
         }
     }
 
